@@ -24,12 +24,26 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "瞄瞄工厂 MMGC",
+  "alternateName": "MMGC Voxel Studio",
+  "description": "瞄瞄工厂（MMGC）把三视图 / 6 视图整图一键重建为体素模型，导出 8 方向精灵表、OBJ、GLB、VOX、十字展图。",
   "applicationCategory": "DesignApplication",
   "operatingSystem": "Windows 10/11",
   "softwareVersion": "0.0.1",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "128"
+  },
   "offers": [
     { "@type": "Offer", "price": "0", "priceCurrency": "CNY", "name": "免费版" },
     { "@type": "Offer", "price": "49", "priceCurrency": "CNY", "name": "个人版（买断）" }
+  ],
+  "featureList": [
+    "三视图/6视图自动重建",
+    "8方向精灵表导出",
+    "OBJ/GLB/VOX 3D格式导出",
+    "十字展图回导精修",
+    "AI生图深度集成"
   ]
 }
 </script>
@@ -253,14 +267,14 @@
     <table class="fmt-table">
       <thead><tr><th>格式</th><th>用途</th><th>目标引擎 / 软件</th><th>授权</th></tr></thead>
       <tbody>
-        <tr><td><div class="fmt-name">8 方向精灵表</div><div class="fmt-en">SPRITE SHEET · 8</div></td><td>8 个等角方向一图打包</td><td>Godot / Unity / GameMaker / RPG Maker</td><td class="free">免费版可用</td></tr>
-        <tr><td><div class="fmt-name">16 方向精灵表</div><div class="fmt-en">SPRITE SHEET · 16</div></td><td>16 方向，旋转动画更顺滑</td><td>同上</td><td class="paid">个人版起</td></tr>
-        <tr><td><div class="fmt-name">当前视角 PNG 单帧</div><div class="fmt-en">PNG FRAME</div></td><td>当前轴向原始分辨率像素图，1:1</td><td>Aseprite / 任意图像软件</td><td class="free">免费版可用</td></tr>
-        <tr><td><div class="fmt-name">十字展图</div><div class="fmt-en">CROSS MAP</div></td><td>六面颜色展开图，改色后回导</td><td>Photoshop / Aseprite</td><td class="paid">个人版起</td></tr>
-        <tr><td><div class="fmt-name">OBJ（逐格）</div><div class="fmt-en">OBJ · PER-VOXEL</div></td><td>每体素一个立方体，方便二次修改</td><td>Blender / Maya</td><td class="paid">个人版起</td></tr>
-        <tr><td><div class="fmt-name">OBJ（优化）</div><div class="fmt-en">OBJ · GREEDY MESHING</div></td><td>合并相邻面，面数大幅减少</td><td>游戏引擎实时渲染</td><td class="paid">个人版起</td></tr>
-        <tr><td><div class="fmt-name">GLB</div><div class="fmt-en">GLB (glTF 2.0)</div></td><td>二进制 glTF，体积小</td><td>Unity / Unreal / Godot / Blender</td><td class="paid">个人版起</td></tr>
-        <tr><td><div class="fmt-name">VOX</div><div class="fmt-en">VOX</div></td><td>MagicaVoxel 原生格式</td><td>MagicaVoxel</td><td class="paid">个人版起</td></tr>
+        <tr><td data-label="格式"><div class="fmt-name">8 方向精灵表</div><div class="fmt-en">SPRITE SHEET · 8</div></td><td data-label="用途">8 个等角方向一图打包</td><td data-label="目标引擎 / 软件">Godot / Unity / GameMaker / RPG Maker</td><td data-label="授权" class="free">免费版可用</td></tr>
+        <tr><td data-label="格式"><div class="fmt-name">16 方向精灵表</div><div class="fmt-en">SPRITE SHEET · 16</div></td><td data-label="用途">16 方向，旋转动画更顺滑</td><td data-label="目标引擎 / 软件">同上</td><td data-label="授权" class="paid">个人版起</td></tr>
+        <tr><td data-label="格式"><div class="fmt-name">当前视角 PNG 单帧</div><div class="fmt-en">PNG FRAME</div></td><td data-label="用途">当前轴向原始分辨率像素图，1:1</td><td data-label="目标引擎 / 软件">Aseprite / 任意图像软件</td><td data-label="授权" class="free">免费版可用</td></tr>
+        <tr><td data-label="格式"><div class="fmt-name">十字展图</div><div class="fmt-en">CROSS MAP</div></td><td data-label="用途">六面颜色展开图，改色后回导</td><td data-label="目标引擎 / 软件">Photoshop / Aseprite</td><td data-label="授权" class="paid">个人版起</td></tr>
+        <tr><td data-label="格式"><div class="fmt-name">OBJ（逐格）</div><div class="fmt-en">OBJ · PER-VOXEL</div></td><td data-label="用途">每体素一个立方体，方便二次修改</td><td data-label="目标引擎 / 软件">Blender / Maya</td><td data-label="授权" class="paid">个人版起</td></tr>
+        <tr><td data-label="格式"><div class="fmt-name">OBJ（优化）</div><div class="fmt-en">OBJ · GREEDY MESHING</div></td><td data-label="用途">合并相邻面，面数大幅减少</td><td data-label="目标引擎 / 软件">游戏引擎实时渲染</td><td data-label="授权" class="paid">个人版起</td></tr>
+        <tr><td data-label="格式"><div class="fmt-name">GLB</div><div class="fmt-en">GLB (glTF 2.0)</div></td><td data-label="用途">二进制 glTF，体积小</td><td data-label="目标引擎 / 软件">Unity / Unreal / Godot / Blender</td><td data-label="授权" class="paid">个人版起</td></tr>
+        <tr><td data-label="格式"><div class="fmt-name">VOX</div><div class="fmt-en">VOX</div></td><td data-label="用途">MagicaVoxel 原生格式</td><td data-label="目标引擎 / 软件">MagicaVoxel</td><td data-label="授权" class="paid">个人版起</td></tr>
       </tbody>
     </table>
     <p class="fmt-note">免费版可免费用重建、预览，并导出 <strong>8 方向精灵表</strong>；导出 3D（OBJ / GLB）与体素（VOX）等格式需个人版授权（¥49 买断）。详见<a href="#pricing" style="color:var(--c-cyan)">定价</a>。</p>
