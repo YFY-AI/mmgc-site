@@ -8,8 +8,8 @@
       "size_bytes": 111624896,
       "size_label": "111 MB",
       "sha256": "3f9a8c1d4b6e2f70a5c9d3e8b1f4a7c2d6e0b3f9a8c1d4b6e2f70a5c9d3e8c21b",
-      "url": "https://github.com/YFY-AI/mmgc-site/releases/download/v1.0.0/MMGC-Setup-v1.0.0.exe",
-      "mirror": "https://github.com/YFY-AI/mmgc-site/releases/download/v1.0.0/MMGC-Setup-v1.0.0.exe",
+      "url": "https://lhcos-2d450-1317071874.cos.ap-hongkong.myqcloud.com/dl/MMGC-Setup-v1.0.0.exe",
+      "mirror": "https://lhcos-2d450-1317071874.cos.ap-hongkong.myqcloud.com/dl/MMGC-Setup-v1.0.0.exe",
       "added": [
         "三视图 / 6 视图整图自动重建（统一缩放 + 64 色共享调色板）",
         "8 方向精灵表、OBJ（逐格 / 网格优化）、GLB、VOX 导出",
