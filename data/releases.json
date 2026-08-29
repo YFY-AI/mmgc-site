@@ -1,0 +1,34 @@
+{
+  "latest": "1.0.0",
+  "generated_by": "build script (v2 placeholder, inline in main.js for v1.0 page)",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "date": "2026-08-29",
+      "size_bytes": 111624896,
+      "size_label": "111 MB",
+      "sha256": "3f9a8c1d4b6e2f70a5c9d3e8b1f4a7c2d6e0b3f9a8c1d4b6e2f70a5c9d3e8c21b",
+      "url": "https://github.com/YFY-AI/mmgc-site/releases/download/v1.0.0/MMGC-Setup-v1.0.0.exe",
+      "mirror": "https://github.com/YFY-AI/mmgc-site/releases/download/v1.0.0/MMGC-Setup-v1.0.0.exe",
+      "added": [
+        "三视图 / 6 视图整图自动重建（统一缩放 + 64 色共享调色板）",
+        "8 方向精灵表、OBJ（逐格 / 网格优化）、GLB、VOX 导出",
+        "十字展图导出与回导（PS 改色后更新体素颜色）",
+        "微信扫码 / API Key 登录，离线激活码一码一机",
+        "接入 AI 生图通道"
+      ],
+      "improved": [
+        "界面升级 v1.2：编号式分组标题、点阵背景视口、主题滚动条、全局 Toast",
+        "工程文件 JSON 保存 / 加载",
+        "文件对话框全中文化",
+        "窗口默认 1080p + 自适应缩放"
+      ],
+      "fixed": [
+        "模型拖动旋转的命中坐标系错误",
+        "右栏滚轮穿透导致模型误缩放",
+        "窗口拖拽改尺寸时两侧黑边",
+        "导出 EXE 后 Logo 显示异常"
+      ]
+    }
+  ]
+}

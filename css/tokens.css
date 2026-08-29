@@ -1,0 +1,48 @@
+/* ============================================================
+   MMGC 落地页 · 设计 Token（颜色/字体/间距唯一真相源）
+   完全沿用 DESIGN.md v1.2 色板，禁止在业务 CSS 里手写 RGB 字面量
+   ============================================================ */
+:root {
+  /* —— 色阶 6 层（深度靠叠层表达，绝不用阴影）—— */
+  --c-abyss:        #0B0B0F;  /* L0 绝对主背景 */
+  --c-dark-iron:    #121218;  /* L1 顶/底栏、页脚 */
+  --c-charcoal:     #18181B;  /* L2 卡片/面板底 */
+  --c-surface-mid:  #202024;  /* L3 卡片内区块/输入框 */
+  --c-surface-hi:   #27272A;  /* L4 Hover 表面 */
+  --c-control:      #3F3F46;  /* L5 强分隔线/禁用 */
+
+  /* —— 品牌色 —— */
+  --c-gold:         #FFC000;  /* 兰博基尼金 · 唯一主 CTA */
+  --c-gold-hover:   #D4A200;  /* 金按钮 hover 中间态 */
+  --c-gold-press:   #917300;  /* 金按钮按下 */
+  --c-gold-text:    #FFCE3E;  /* 行内金文字 */
+  --c-cyan:         #38BDF8;  /* 体素青 · 聚焦/选中 */
+  --c-teal:         #1EAEDB;  /* 幽灵按钮 hover 填充 */
+
+  /* —— 文字 —— */
+  --text-primary:   #FAFAFA;
+  --text-muted:     #A1A1AA;
+  --text-disabled:  #71717A;
+  --text-on-gold:   #0B0B0F;
+
+  /* —— 边框 —— */
+  --border-subtle:  #27272A;
+  --border-normal:  #3F3F46;
+  --border-focus:   #38BDF8;
+  --border-gold:    #FFC000;
+
+  /* —— 字体族 —— */
+  --font-sans: "Microsoft YaHei UI", "微软雅黑", system-ui, -apple-system, "PingFang SC", sans-serif;
+  --font-en:   "Inter", "Microsoft YaHei UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  /* —— 间距基线（4px 栅格）—— */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
+
+  /* —— 容器 —— */
+  --w-content: 1028px;  /* 正文区 */
+  --w-wide:    1180px;  /* 表格/画廊放宽 */
+  --w-nav:     1180px;
+}

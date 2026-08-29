@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>瞄瞄工厂 MMGC · 三视图转体素模型，导出精灵图 / OBJ / GLB / VOX</title>
+<meta name="description" content="瞄瞄工厂（MMGC）把三视图 / 6 视图整图一键重建为体素模型，导出 8 方向精灵表、OBJ、GLB、VOX、十字展图。本地运行，免费下载，买断制无订阅。" />
+<meta name="keywords" content="体素, voxel, 三视图, 六视图, 像素游戏, 精灵图, 体素重建, MMGC, 瞄瞄工厂" />
+<meta name="author" content="MMGC" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230B0B0F'/%3E%3Crect x='8' y='8' width='16' height='16' fill='%23FFC000'/%3E%3C/svg%3E" />
+
+<!-- OGP -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="瞄瞄工厂 MMGC · 三视图转体素模型" />
+<meta property="og:description" content="把三视图 / 6 视图整图一键重建为体素模型，导出精灵图 / OBJ / GLB / VOX。本地运行，免费下载。" />
+<meta property="og:image" content="https://miaomiaoai.cc/ogp/ogp.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "瞄瞄工厂 MMGC",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Windows 10/11",
+  "softwareVersion": "1.0.0",
+  "offers": [
+    { "@type": "Offer", "price": "0", "priceCurrency": "CNY", "name": "免费版" },
+    { "@type": "Offer", "price": "49", "priceCurrency": "CNY", "name": "个人版（买断）" }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ===== 顶栏 ===== -->
+<header class="topbar">
+  <div class="container">
+    <div class="brand"><img src="assets/logo.svg" alt="瞄瞄工厂 MMGC" class="brand-logo" height="28" width="135"></div>
+    <nav class="nav-links">
+      <a href="#workflow">工作流</a>
+      <a href="#features">功能</a>
+      <a href="#formats">格式</a>
+      <a href="#pricing">定价</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Sticky 导航 ===== -->
+<nav id="sticky-nav">
+  <div class="container">
+    <div class="brand"><img src="assets/logo.svg" alt="瞄瞄工厂 MMGC" class="brand-logo" height="28" width="135"></div>
+    <div class="nav-links">
+      <a href="#features">功能</a>
+      <a href="#formats">格式</a>
+      <a href="#pricing">定价</a>
+      <a href="#faq">常见问题</a>
+      <a class="btn btn-gold" href="https://github.com/YFY-AI/mmgc-site/releases/download/v1.0.0/MMGC-Setup-v1.0.0.exe" data-dl-version="1.0.0" data-dl-latest="true" data-dl-pos="sticky"><span class="txt">免费下载</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== 1. HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-copy">
+      <span class="eyebrow">VOXEL RECONSTRUCTION STUDIO</span>
+      <h1 class="hero-title">三张图，<br/>生成一整个<span class="gold-text">体素世界</span></h1>
+      <p class="hero-sub">丢进正面 + 侧面 + 顶面三张参考图（或一张 6 视图整图），一键重建三维体素模型，再导出成 8 方向精灵图、OBJ（带贴图）、GLB、VOX、十字展图。为像素游戏美术生产而生。</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="https://github.com/YFY-AI/mmgc-site/releases/download/v1.0.0/MMGC-Setup-v1.0.0.exe" data-dl-version="1.0.0" data-dl-latest="true" data-dl-pos="hero">免费下载 Windows 版</a>
+        <a class="btn btn-ghost" href="#workflow">看 30 秒演示</a>
+      </div>
+      <p class="hero-note">v1.0.0 · 111 MB · Windows 10/11 ｜ 免费下载 · 登录后免费重建/预览，并可导出 8 方向精灵表</p>
+      <div class="trust-bar">
+        <span class="chip">无需 GPU</span>
+        <span class="chip">本地计算</span>
+        <span class="chip">免费下载</span>
+        <span class="chip">买断制 · 无订阅</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="compare">
+        <!-- 左：6 视图缩略图网格（占位，上线前替换为真机截图 A2） -->
+        <div class="compare-box">
+          <span class="cap">6-VIEW INPUT</span>
+          <svg viewBox="0 0 200 260" width="100%" style="flex:1" aria-label="六视图输入缩略图">
+            <rect x="0" y="0" width="200" height="260" fill="#121218"/>
+            <g fill="none" stroke="#27272A" stroke-width="1">
+              <rect x="8" y="8" width="88" height="78"/><rect x="104" y="8" width="88" height="78"/>
+              <rect x="8" y="94" width="88" height="78"/><rect x="104" y="94" width="88" height="78"/>
+              <rect x="8" y="180" width="88" height="72"/><rect x="104" y="180" width="88" height="72"/>
+            </g>
+            <!-- 每个 cell 一个简化"车"轮廓 -->
+            <g fill="#3F3F46">
+              <rect x="38" y="34" width="28" height="26"/><rect x="44" y="26" width="16" height="10"/>
+              <rect x="134" y="34" width="28" height="26"/><rect x="140" y="26" width="16" height="10"/>
+              <rect x="38" y="120" width="28" height="26"/><rect x="44" y="112" width="16" height="10"/>
+              <rect x="134" y="120" width="28" height="26"/><rect x="140" y="112" width="16" height="10"/>
+              <rect x="38" y="204" width="28" height="24"/><rect x="44" y="196" width="16" height="10"/>
+              <rect x="134" y="204" width="28" height="24"/><rect x="140" y="196" width="16" height="10"/>
+            </g>
+            <g fill="#FFC000" opacity="0.85">
+              <rect x="48" y="44" width="8" height="8"/><rect x="144" y="44" width="8" height="8"/>
+              <rect x="48" y="130" width="8" height="8"/><rect x="144" y="130" width="8" height="8"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="compare-arrow">→</div>
+
+        <!-- 右：体素重建结果（占位 SVG 体素堆，上线前替换为真机 PNG 单帧 A2） -->
+        <div class="compare-box">
+          <span class="cap">VOXEL OUTPUT</span>
+          <svg viewBox="0 0 240 200" width="100%" style="flex:1" aria-label="体素重建结果">
+            <defs>
+              <g id="cube">
+                <polygon points="0,0 24,12 0,24 -24,12" fill="#3a3a44"/>
+                <polygon points="-24,12 0,24 0,48 -24,36" fill="#20202a"/>
+                <polygon points="24,12 0,24 0,48 24,36" fill="#2c2c36"/>
+              </g>
+            </defs>
+            <!-- 车身：2 个 cube 并排 -->
+            <use href="#cube" x="78" y="120"/>
+            <use href="#cube" x="126" y="144"/>
+            <!-- 车顶：金色 cube -->
+            <g>
+              <polygon points="126,72 150,84 126,96 102,84" fill="#FFC000"/>
+              <polygon points="102,84 126,96 126,120 102,108" fill="#D4A200"/>
+              <polygon points="150,84 126,96 126,120 150,108" fill="#F0B800"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-fade"></div>
+</section>
+
+<!-- ===== 2. 价值三栏 ===== -->
+<section id="why">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">WHY MMGC</span>
+      <h2 class="h2">为什么是瞄瞄工厂</h2>
+    </div>
+    <div class="why-grid">
+      <article class="why-card reveal">
+        <div class="why-num">01</div>
+        <h3>30 秒看懂</h3>
+        <p>不用学体素雕刻。拖进三张图，点一次重建，剩下的交给算法。</p>
+      </article>
+      <article class="why-card reveal">
+        <div class="why-num">02</div>
+        <h3>免费导精灵，升级解锁 3D</h3>
+        <p>同一份模型，免费版直接导出 8 方向精灵表；升级个人版解锁 OBJ / GLB / VOX 等 3D 与体素格式。</p>
+      </article>
+      <article class="why-card reveal">
+        <div class="why-num">03</div>
+        <h3>本地算，不吃显卡</h3>
+        <p>重建与导出全在本地 CPU 完成，不吃显卡，素材不出这台电脑。仅登录与授权需要联网。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. 工作流 ===== -->
+<section id="workflow">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">WORKFLOW</span>
+      <h2 class="h2">四步，从图片到资产</h2>
+      <p class="section-sub">下载后跟着做一遍，就能跑通完整流程。</p>
+    </div>
+    <div class="workflow-grid">
+      <article class="step reveal"><span class="step-no">STEP 01</span><h4>导入参考图</h4><p>三张独立视图，或一张 6 视图整图（自动切分为正/侧/顶/后/左/右）。</p></article>
+      <article class="step reveal"><span class="step-no">STEP 02</span><h4>校正与重排</h4><p>缩略图拖拽互换位置，自动加金/蓝边框高亮；统一缩放保证六视图比例一致。</p></article>
+      <article class="step reveal"><span class="step-no">STEP 03</span><h4>体素重建</h4><p>Oklab 感知色域 + K-means 生成 64 色共享调色板，自动剔除被包裹的内部体素。</p></article>
+      <article class="step reveal"><span class="step-no">STEP 04</span><h4>导出交付</h4><p>选定格式一键导出，直接拖进 Unity / Unreal / Godot / Blender / Aseprite。</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. 核心功能 8 卡 ===== -->
+<section id="features">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">FEATURES</span>
+      <h2 class="h2">为像素美术生产打磨的功能</h2>
+    </div>
+    <div class="feat-grid">
+      <article class="feat-card reveal">
+        <svg class="feat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16"/><rect x="24" y="4" width="16" height="16"/><rect x="4" y="24" width="16" height="16"/><rect x="24" y="24" width="16" height="16"/></svg>
+        <span class="feat-en">6-VIEW AUTO SPLIT</span><h4>6 视图整图自动切分</h4>
+        <p>一张整图丢进来，自动切成正/侧/顶/后/左/右 6 张，不用手动裁。</p>
+      </article>
+      <article class="feat-card reveal">
+        <svg class="feat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2"><circle cx="14" cy="14" r="8"/><circle cx="30" cy="30" r="8"/><path d="M14 22v4M30 12v4"/></svg>
+        <span class="feat-en">UNIFIED SCALE · SHARED PALETTE</span><h4>统一比例与共享调色板</h4>
+        <p>六视图共用同一像素尺度与 64 色调色板，车身主色全局一致，不做二次校色。</p>
+      </article>
+      <article class="feat-card reveal">
+        <svg class="feat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8h12v12H8zM24 24h12v12H24z" opacity="0.4"/><path d="M22 14l10 10M22 30l10-10"/></svg>
+        <span class="feat-en">INTERIOR CULLING</span><h4>内部体素剔除</h4>
+        <p>自动移除被完全包裹的内部体素，渲染更快、导出文件更小。</p>
+      </article>
+      <article class="feat-card reveal">
+        <svg class="feat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6l8 5v10l-8 5-8-5V11z"/><path d="M22 26v12M14 30v8M30 30v8" opacity="0.5"/></svg>
+        <span class="feat-en">MULTI-VIEW PREVIEW</span><h4>多视角预览</h4>
+        <p>鼠标拖拽自由旋转，也可切换固定轴向、完美像素等距投影、独立 3D 小窗。</p>
+      </article>
+      <article class="feat-card reveal">
+        <svg class="feat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="22" r="5"/><circle cx="22" cy="14" r="5"/><circle cx="22" cy="30" r="5"/><circle cx="34" cy="22" r="5"/></svg>
+        <span class="feat-en">8-DIRECTION SPRITE SHEET</span><h4>8 方向精灵表</h4>
+        <p>8 个等角方向一图打包，方向天然一致，直接导入 2D 引擎。</p>
+      </article>
+      <article class="feat-card reveal">
+        <svg class="feat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6l14 8v16l-14 8-14-8V14z"/><path d="M22 6v16l14-8M22 22v16"/></svg>
+        <span class="feat-en">OBJ · 2 MODES</span><h4>OBJ 双模式导出</h4>
+        <p>逐格模式（每体素 1 立方体，方便改）/ 网格优化模式（Greedy Meshing，面数骤降）。</p>
+      </article>
+      <article class="feat-card reveal">
+        <svg class="feat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 16l14-8 14 8v16l-14 8-14-8z"/><path d="M22 8v16M8 16l14 8 14-8"/></svg>
+        <span class="feat-en">GLB · VOX READY</span><h4>GLB / VOX 直通</h4>
+        <p>GLB 拖进 Unity / Unreal / Blender；VOX 进 MagicaVoxel 继续打磨。</p>
+      </article>
+      <article class="feat-card reveal">
+        <svg class="feat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4v14M22 26v14M4 22h14M26 22h14"/><circle cx="22" cy="22" r="3" fill="currentColor"/></svg>
+        <span class="feat-en">CROSS MAP ROUND-TRIP</span><h4>十字展图回导</h4>
+        <p>导出六面展开图 → PS 里改色 → 导回来更新体素颜色，只改色不改形。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. 导出格式矩阵 ===== -->
+<section id="formats">
+  <div class="container wide">
+    <div class="section-head">
+      <span class="eyebrow">OUTPUT FORMATS</span>
+      <h2 class="h2">一次重建，多种交付格式</h2>
+      <p class="section-sub">同一份体素模型，想导哪个导哪个。</p>
+    </div>
+    <table class="fmt-table">
+      <thead><tr><th>格式</th><th>用途</th><th>目标引擎 / 软件</th><th>授权</th></tr></thead>
+      <tbody>
+        <tr><td><div class="fmt-name">8 方向精灵表</div><div class="fmt-en">SPRITE SHEET · 8</div></td><td>8 个等角方向一图打包</td><td>Godot / Unity / GameMaker / RPG Maker</td><td class="free">免费版可用</td></tr>
+        <tr><td><div class="fmt-name">16 方向精灵表</div><div class="fmt-en">SPRITE SHEET · 16</div></td><td>16 方向，旋转动画更顺滑</td><td>同上</td><td class="paid">个人版起</td></tr>
+        <tr><td><div class="fmt-name">当前视角 PNG 单帧</div><div class="fmt-en">PNG FRAME</div></td><td>当前轴向原始分辨率像素图，1:1</td><td>Aseprite / 任意图像软件</td><td class="free">免费版可用</td></tr>
+        <tr><td><div class="fmt-name">十字展图</div><div class="fmt-en">CROSS MAP</div></td><td>六面颜色展开图，改色后回导</td><td>Photoshop / Aseprite</td><td class="paid">个人版起</td></tr>
+        <tr><td><div class="fmt-name">OBJ（逐格）</div><div class="fmt-en">OBJ · PER-VOXEL</div></td><td>每体素一个立方体，方便二次修改</td><td>Blender / Maya</td><td class="paid">个人版起</td></tr>
+        <tr><td><div class="fmt-name">OBJ（优化）</div><div class="fmt-en">OBJ · GREEDY MESHING</div></td><td>合并相邻面，面数大幅减少</td><td>游戏引擎实时渲染</td><td class="paid">个人版起</td></tr>
+        <tr><td><div class="fmt-name">GLB</div><div class="fmt-en">GLB (glTF 2.0)</div></td><td>二进制 glTF，体积小</td><td>Unity / Unreal / Godot / Blender</td><td class="paid">个人版起</td></tr>
+        <tr><td><div class="fmt-name">VOX</div><div class="fmt-en">VOX</div></td><td>MagicaVoxel 原生格式</td><td>MagicaVoxel</td><td class="paid">个人版起</td></tr>
+      </tbody>
+    </table>
+    <p class="fmt-note">免费版可免费用重建、预览，并导出 <strong>8 方向精灵表</strong>；导出 3D（OBJ / GLB）与体素（VOX）等格式需个人版授权（¥49 买断）。详见<a href="#pricing" style="color:var(--c-cyan)">定价</a>。</p>
+  </div>
+</section>
+
+<!-- ===== 6. 效果画廊 ===== -->
+<section id="gallery">
+  <div class="container wide">
+    <div class="section-head">
+      <span class="eyebrow">GALLERY</span>
+      <h2 class="h2">输入原图 → 输出体素</h2>
+      <p class="section-sub">点击任意卡片查看大图。（以下为占位插画，上线前替换为真机 F5 截图 A6）</p>
+    </div>
+    <div class="gallery-grid">
+      <!-- 统一占位 art-svg：左灰右彩 + 金分割；caption 区分 G1-G5 -->
+      <article class="gallery-card reveal" data-cap="G1 · 载具（车）6 视图 → 体素">
+        <svg class="art-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="300" fill="#0B0B0F"/>
+          <rect x="0" y="0" width="200" height="300" fill="#121218"/>
+          <g stroke="#27272A" fill="none"><rect x="40" y="40" width="120" height="100"/><rect x="40" y="160" width="120" height="100"/></g>
+          <rect x="80" y="70" width="40" height="40" fill="#3F3F46"/><rect x="80" y="190" width="40" height="40" fill="#3F3F46"/>
+          <g transform="translate(280,150)"><polygon points="0,0 30,15 0,30 -30,15" fill="#FFC000"/><polygon points="-30,15 0,30 0,60 -30,45" fill="#D4A200"/><polygon points="30,15 0,30 0,60 30,45" fill="#F0B800"/></g>
+          <rect x="198" y="0" width="4" height="300" fill="#FFC000"/>
+        </svg>
+        <div class="g-cap"><span class="g-tag">G1 · VEHICLE</span>6 视图整图 → 体素重建</div>
+      </article>
+      <article class="gallery-card reveal" data-cap="G2 · 角色三视图 → 8 方向精灵表">
+        <svg class="art-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="300" fill="#0B0B0F"/>
+          <rect x="0" y="0" width="200" height="300" fill="#121218"/>
+          <circle cx="100" cy="90" r="26" fill="#3F3F46"/><rect x="78" y="120" width="44" height="90" fill="#3F3F46"/>
+          <g fill="#FFC000"><rect x="60" y="230" width="22" height="22"/><rect x="118" y="230" width="22" height="22"/><rect x="89" y="150" width="22" height="22"/></g>
+          <rect x="198" y="0" width="4" height="300" fill="#FFC000"/>
+        </svg>
+        <div class="g-cap"><span class="g-tag">G2 · CHARACTER</span>三视图 → 8 方向精灵表</div>
+      </article>
+      <article class="gallery-card reveal" data-cap="G3 · 道具 → OBJ 网格优化">
+        <svg class="art-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="300" fill="#0B0B0F"/>
+          <rect x="0" y="0" width="200" height="300" fill="#121218"/>
+          <rect x="70" y="110" width="60" height="80" fill="#3F3F46"/><rect x="90" y="90" width="20" height="20" fill="#52525B"/>
+          <g transform="translate(290,150)"><polygon points="0,0 30,15 0,30 -30,15" fill="#FFC000"/><polygon points="-30,15 0,30 0,60 -30,45" fill="#D4A200"/><polygon points="30,15 0,30 0,60 30,45" fill="#F0B800"/></g>
+          <rect x="198" y="0" width="4" height="300" fill="#FFC000"/>
+        </svg>
+        <div class="g-cap"><span class="g-tag">G3 · PROP</span>道具 → OBJ 优化模式</div>
+      </article>
+      <article class="gallery-card reveal" data-cap="G4 · 建筑构件 → GLB">
+        <svg class="art-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="300" fill="#0B0B0F"/>
+          <rect x="0" y="0" width="200" height="300" fill="#121218"/>
+          <rect x="60" y="60" width="80" height="180" fill="#3F3F46"/><rect x="75" y="80" width="20" height="20" fill="#52525B"/><rect x="105" y="80" width="20" height="20" fill="#52525B"/>
+          <g transform="translate(290,160)"><polygon points="0,0 34,17 0,34 -34,17" fill="#FFC000"/><polygon points="-34,17 0,34 0,68 -34,51" fill="#D4A200"/><polygon points="34,17 0,34 0,68 34,51" fill="#F0B800"/></g>
+          <rect x="198" y="0" width="4" height="300" fill="#FFC000"/>
+        </svg>
+        <div class="g-cap"><span class="g-tag">G4 · ARCHITECTURE</span>建筑构件 → GLB</div>
+      </article>
+      <article class="gallery-card reveal" data-cap="G5 · 十字展图 → PS 改色 → 回导">
+        <svg class="art-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="300" fill="#0B0B0F"/>
+          <rect x="0" y="0" width="200" height="300" fill="#121218"/>
+          <g fill="#3F3F46"><rect x="60" y="60" width="80" height="40"/><rect x="60" y="110" width="80" height="40"/><rect x="60" y="160" width="80" height="40"/><rect x="60" y="210" width="80" height="40"/></g>
+          <g fill="#38BDF8"><rect x="100" y="60" width="40" height="40"/><rect x="60" y="110" width="40" height="40"/><rect x="100" y="160" width="40" height="40"/><rect x="60" y="210" width="40" height="40"/></g>
+          <rect x="198" y="0" width="4" height="300" fill="#FFC000"/>
+        </svg>
+        <div class="g-cap"><span class="g-tag">G5 · CROSS MAP</span>十字展图改色 → 回导</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. 定价 ===== -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">PRICING</span>
+      <h2 class="h2">一次买断，永久可用</h2>
+      <p class="section-sub">没有订阅，没有额度焦虑。免费版即可开始创作。</p>
+    </div>
+    <div class="price-grid">
+      <article class="price-card reveal">
+        <span class="p-tier">FREE</span>
+        <div class="p-name">免费版</div>
+        <div class="p-price">¥0</div>
+        <div class="p-devices">下载 + 安装 + 登录即可使用</div>
+        <ul>
+          <li><span class="sq"></span>重建与预览全功能免费</li>
+          <li><span class="sq"></span>导出 8 方向精灵表（PNG）</li>
+          <li><span class="sq"></span>导出当前视角单帧 PNG</li>
+          <li><span class="sq"></span>本地运行，素材不出本机</li>
+        </ul>
+        <a class="btn btn-gold" href="https://github.com/YFY-AI/mmgc-site/releases/download/v1.0.0/MMGC-Setup-v1.0.0.exe" data-dl-version="1.0.0" data-dl-latest="true" data-dl-pos="price-free">免费下载</a>
+      </article>
+      <article class="price-card feature reveal">
+        <span class="p-tier">PERSONAL</span>
+        <div class="p-name">个人版</div>
+        <div class="p-price">¥49 <small>买断</small></div>
+        <div class="p-bird">早鸟价 ¥29（限量）</div>
+        <div class="p-devices">3 台设备 · 永久授权</div>
+        <ul>
+          <li><span class="sq"></span>免费版全部功能</li>
+          <li><span class="sq"></span>解锁 3D：OBJ（逐格 / 优化）/ GLB</li>
+          <li><span class="sq"></span>解锁体素：VOX</li>
+          <li><span class="sq"></span>16 方向精灵表 + 十字展图</li>
+          <li><span class="sq"></span>完整商用授权（不限营收）</li>
+        </ul>
+        <a class="btn btn-gold" href="#" data-dl-version="personal" data-dl-latest="false" data-dl-pos="price-paid">立即购买</a>
+      </article>
+    </div>
+    <p class="price-extra">AI 生图积分另售：1000 积分 ¥10 ／ 6000 积分 ¥50（赠 1000）／ 15000 积分 ¥100（赠 5000）。企业 / 团队需求走「联系商务」线下报价。</p>
+  </div>
+</section>
+
+<!-- ===== 8. FAQ ===== -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="h2">常见问题</h2>
+    </div>
+    <div class="faq-list">
+      <details open>
+        <summary>免费版能导出文件吗？<span class="arrow">▾</span></summary>
+        <div class="faq-a">能。<strong>免费版可导出 8 方向精灵表（PNG）和当前视角单帧</strong>，足以支撑 2D 像素游戏生产；3D 模型（OBJ / GLB）与体素（VOX）格式需个人版授权（¥49 买断）。</div>
+      </details>
+      <details>
+        <summary>需要联网吗？<span class="arrow">▾</span></summary>
+        <div class="faq-a">重建与渲染全部在本地 CPU 完成，素材不出本机。需要联网的只有：登录、授权校验、激活、充值。</div>
+      </details>
+      <details>
+        <summary>需要显卡吗？<span class="arrow">▾</span></summary>
+        <div class="faq-a">不需要。预览渲染是纯 CPU 像素计算，集成显卡也能跑。</div>
+      </details>
+      <details>
+        <summary>支持 macOS / Linux 吗？<span class="arrow">▾</span></summary>
+        <div class="faq-a">当前仅发布 Windows 10/11 64 位版本。macOS / Linux 兼容但未做官方测试，后续视需求排期。</div>
+      </details>
+      <details>
+        <summary>输入图有什么要求？<span class="arrow">▾</span></summary>
+        <div class="faq-a">建议白底、主体居中、六视图同一像素尺度。支持三视图（正/侧/顶）或 6 视图整图（2 列 × 3 行）。</div>
+      </details>
+      <details>
+        <summary>导出的模型比例准吗？<span class="arrow">▾</span></summary>
+        <div class="faq-a">六视图由统一缩放因子处理，不按单图独立拉伸，忠实保留原画自身比例。</div>
+      </details>
+      <details>
+        <summary>能商用吗？<span class="arrow">▾</span></summary>
+        <div class="faq-a">免费版导出仅供<strong>学习 / 个人非商用</strong>；个人版（¥49 买断）即附完整商用授权，不限年营收，可直接用于 Steam 等商业发行。</div>
+      </details>
+      <details>
+        <summary>和 MagicaVoxel 冲突吗？<span class="arrow">▾</span></summary>
+        <div class="faq-a">不冲突，反而互补：瞄瞄工厂负责"从图到体素"，VOX 导出后可在 MagicaVoxel 继续精修。</div>
+      </details>
+      <details>
+        <summary>能下载旧版本吗？<span class="arrow">▾</span></summary>
+        <div class="faq-a">可以。每个历史版本在<a href="#changelog" style="color:var(--c-cyan)">版本更新历史</a>里都有独立下载链接。</div>
+      </details>
+      <details>
+        <summary>支持哪些支付方式？<span class="arrow">▾</span></summary>
+        <div class="faq-a">微信支付。买断后生成离线激活码，一码绑定一台机器。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9. 系统要求 ===== -->
+<section id="sysreq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">SYSTEM REQUIREMENTS</span>
+      <h2 class="h2">系统要求</h2>
+    </div>
+    <table class="sysreq-table">
+      <tbody>
+        <tr><th>操作系统</th><td>Windows 10 / 11（64 位）｜ macOS / Linux 未官方测试</td></tr>
+        <tr><th>内存</th><td>8 GB（建议）｜ 大体素模型重建时需要较多内存</td></tr>
+        <tr><th>显卡</th><td>无硬性要求｜ 预览渲染为纯 CPU 计算</td></tr>
+        <tr><th>硬盘</th><td>约 300 MB ｜ 安装包 111 MB</td></tr>
+        <tr><th>网络</th><td>仅登录 / 充值时需要 ｜ 本地重建与导出完全离线</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 10. 版本更新历史 ===== -->
+<section id="changelog">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">CHANGELOG</span>
+      <h2 class="h2">版本更新历史</h2>
+      <p class="section-sub">每个版本都提供独立下载链接。历史版本仅供回滚，建议始终使用最新版。</p>
+    </div>
+    <div class="cl-timeline" id="changelog-list"><!-- JS 渲染 --></div>
+  </div>
+</section>
+
+<!-- ===== 11. 结尾 CTA + 页脚 ===== -->
+<section class="endcta" id="download-cta">
+  <div class="container">
+    <span class="eyebrow">GET STARTED</span>
+    <h2 class="h2">把你的三视图变成体素模型</h2>
+    <p class="sub">免费下载，登录即可免费体验重建与预览。</p>
+    <a class="btn btn-gold" href="https://github.com/YFY-AI/mmgc-site/releases/download/v1.0.0/MMGC-Setup-v1.0.0.exe" data-dl-version="1.0.0" data-dl-latest="true" data-dl-pos="endcta">免费下载 Windows 版</a>
+    <p class="note">v1.0.0 · 111 MB ｜ 导出 3D/体素需个人版授权（¥49 买断）· 一次买断，无订阅</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="f-left">瞄瞄工厂 MMGC · v1.0.0 · © 2026</div>
+    <nav class="f-right">
+      <a href="#changelog">更新日志</a>
+      <a href="#">使用文档</a>
+      <a href="#faq">常见问题</a>
+      <a href="#">联系我们</a>
+      <a href="#">用户协议</a>
+      <a href="#">隐私政策</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- 灯箱 -->
+<div id="lightbox">
+  <button class="lb-close" aria-label="关闭">✕</button>
+  <div class="lb-inner">
+    <div class="lb-img"></div>
+    <div class="lb-cap"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
